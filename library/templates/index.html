@@ -1,0 +1,226 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f7fc;
+  }
+  .navbar {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+    animation: fadeInDown 1s;
+  }
+  .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .nav-link {
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    animation: fadeInUp 1s;
+  }
+  .nav-link:hover {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  .nav-link.active {
+    background-color: #0056b3;
+  }
+  .hero {
+    background-color: #007bff;
+    color: #fff;
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s;
+  }
+  .hero h1 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+  .hero p {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+  }
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    animation: fadeInRight 1s;
+    border-radius: 10px;
+  }
+  .feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+  }
+  .feature-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .feature-card {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 100%;
+  }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+  .get-started-card {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  .get-started-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+</style>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-book-open"></i>
+             Library Management System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/admin_login/' %}active{% endif %}" href="/admin_login/">
+                        <i class="fas fa-user-cog"></i>
+                        Admin Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/student_registration/' %}active{% endif %}" href="/student_registration/">
+                        <i class="fas fa-user-plus"></i>
+                        Register As Student
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/student_login/' %}active{% endif %}" href="/student_login/">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Student Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="hero">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1>Welcome to the Library Management System</h1>
+                <p>Manage your library with ease using our powerful tools.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://www.distillersr.com/wp-content/uploads/2021/03/Education-Reimbursement.png" alt="Hero Image" class="hero-image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card feature-card mb-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h5 class="feature-title">Catalog Management</h5>
+                            <p class="card-text">Efficiently manage your library's catalog with ease.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card feature-card mb-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h5 class="feature-title">Circulation and Lending</h5>
+                            <p class="card-text">Handle book lending and returns efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card feature-card mb-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5 class="feature-title">Member Management</h5>
+                            <p class="card-text">Manage your library's members with ease.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card feature-card mb-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5 class="feature-title">Reporting and Analytics</h5>
+                            <p class="card-text">Get insights into your library's performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="card get-started-card">
+                <div class="card-header">
+                    <i class="fas fa-rocket"></i>
+                    Get Started
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Ready to start using the Library Management System?</p>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="registerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Register
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="registerDropdown">
+                            <li><a class="dropdown-item" href="/student_registration/">Student Registration</a></li>
+                            <li><a class="dropdown-item" href="/admin_login/">Admin Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
